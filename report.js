@@ -2,7 +2,7 @@ var fs = require('fs');
 const prompt = require("prompt-sync")({ sigint: true });
 
 // List dictionary
-{
+var lists = {
   'Engineering Queue': '635a82b77dc34d052c428471',
   'Expedites': '636aaa703778a90550a5ca95',
   'Layout': '635ac9c199d5fd02ce66210d',
