@@ -1,4 +1,5 @@
 var fs = require('fs');
+var path = require('path');
 const prompt = require("prompt-sync")({ sigint: true });
 
 // List dictionary
@@ -12,7 +13,7 @@ var lists = {
   'Released': '63921ed2610c4900859fa15d'
 }
 
-var obj = JSON.parse(fs.readFileSync('./data/data.json', 'utf8'));
+var obj = JSON.parse(fs.readFileSync(path.join(__dirname, './data/data.json'), 'utf8'));
 
 const input = prompt("What date? (Format MM-DD-YYYY) ");
 const date = `${input.slice(-4)}-${input.slice(0,2)}-${input.slice(3,5)}`
