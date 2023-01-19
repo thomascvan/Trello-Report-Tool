@@ -31,5 +31,5 @@ res.send(`${count}`);
 })
 
 app.listen(port, () => {
-  console.log(`Atelier is listening on port ${port}`)
+  console.log(`Trello Report Tool is listening on port ${port}`)
 })
