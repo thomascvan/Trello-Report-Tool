@@ -8,7 +8,7 @@ const Form = () => {
   const [count, setCount] = useState('0');
 
   function formSubmit() {
-    axios.post('http://localhost:3000/',
+    axios.post('/',
       {
         "startDate": startDate,
         "endDate": endDate,
