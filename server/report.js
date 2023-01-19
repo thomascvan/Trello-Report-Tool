@@ -14,20 +14,23 @@ var lists = {
 
 module.exports.getOutput = (startDate, endDate) => {
   var obj = JSON.parse(fs.readFileSync(path.join(__dirname, './data/data.json'), 'utf8'));
-
-  console.log(`Searching date ${endDate}`);
-  
+  console.log(`Searching from ${startDate} to ${endDate}`);
   var counter = 0;
+
+  var currentDate = new Date(startDate);
+  endDate = new Date(endDate);
+  endDate = endDate.setDate(endDate.getDate() + 1);
   
-  for (var i = 0; i < obj.actions.length; i++) {
-    if (obj.actions[i].data.listBefore != undefined) {
-  
-      if (obj.actions[i].data.listBefore.id === '635a82c0222dd201c3566620' && obj.actions[i].data.listAfter.id === '635a82e622836b00d0ab9e43' && obj.actions[i].date.slice(0,10) == endDate) {
-        // console.log(obj.actions[i].data.card.name)
-        counter++;
+  for (i = currentDate; i < endDate; i = currentDate.setDate(currentDate.getDate() + 1)) {
+    console.log(currentDate.toISOString().slice(0,10));
+    for (var i = 0; i < obj.actions.length; i++) {
+      if (obj.actions[i].data.listBefore != undefined) {
+    
+        if (obj.actions[i].data.listBefore.id === '635a82c0222dd201c3566620' && obj.actions[i].data.listAfter.id === '635a82e622836b00d0ab9e43' && obj.actions[i].date.slice(0,10) == currentDate.toISOString().slice(0,10)) {
+          counter++;
+        }
       }
     }
   }
-  // console.log(counter);
   return counter;
 }
