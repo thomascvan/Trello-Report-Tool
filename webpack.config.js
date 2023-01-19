@@ -1,19 +1,12 @@
 const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, './client/src/index.jsx'),
 
     output: {
-        path: path.join(__dirname, './dist'),
+        path: path.join(__dirname, './client/dist'),
         filename: 'bundle.js'
     },
-
-    plugins: [
-        new HTMLWebpackPlugin({
-            template: path.join(__dirname, './client/src/index.html')
-        })
-    ],
 
     module: {
         rules: [
@@ -32,5 +25,6 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader' ],
             }
         ]
-    }
+    },
+    mode: 'development'
 }
