@@ -5,7 +5,7 @@ const Form = () => {
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [count, setCount] = useState('0');
+  const [count, setCount] = useState('');
 
   function formSubmit() {
     setCount('fetching...')
