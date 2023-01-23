@@ -5,7 +5,7 @@
   "main": "report.js",
   "scripts": {
     "start-server": "nodemon ./server/index.js",
-    "start": "node ./server/report.js",
+    "start": "forever start -c nodemon ./server/index.js",
     "client-dev": "webpack --mode development --watch"
   },
   "author": "",
