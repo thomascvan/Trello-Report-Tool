@@ -23,11 +23,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    console.log(req.body.startDate);
+    console.log('Start date:', req.body.startDate);
     console.log(req.body.endDate);
-    var count = getOutput(req.body.startDate, req.body.endDate)
-    console.log(count);
-res.send(`${count}`);
+    getOutput(req.body.startDate, req.body.endDate)
+    .then(response => {
+      console.log(response);
+      res.send(`${response}`);
+    })
 })
 
 app.listen(port, () => {

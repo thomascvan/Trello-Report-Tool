@@ -8,6 +8,7 @@ const Form = () => {
   const [count, setCount] = useState('0');
 
   function formSubmit() {
+    setCount('fetching...')
     axios.post('/',
       {
         "startDate": startDate,
