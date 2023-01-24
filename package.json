@@ -4,8 +4,9 @@
   "description": "",
   "main": "report.js",
   "scripts": {
-    "start-server": "nodemon ./server/index.js",
-    "start": "forever start -c nodemon ./server/index.js",
+    "server-dev": "nodemon ./server/index.js",
+    "start-server": "node ./server/index.js",
+    "start": "forever start -c node ./server/index.js",
     "client-dev": "webpack --mode development --watch"
   },
   "author": "",
