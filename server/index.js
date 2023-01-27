@@ -1,7 +1,7 @@
 const express = require('express');
 var cors = require('cors');
 const path = require('path');
-const http = require('http');
+// const http = require('http');
 
 
 const { getOutput } = require("./report.js");
@@ -62,18 +62,17 @@ app.post('/', (req, res) => {
         output: output,
         leadTime: leadTime
       });
-      // res.send(`${response}`);
     })
   })
 })
-const httpServer = http.createServer(app);
+// const httpServer = http.createServer(app);
 
-httpServer.listen(80);
+// httpServer.listen(80);
 
 
-// app.listen(port, () => {
-//   console.log(`Trello Report Tool is listening on port ${port}`)
-// })
+app.listen(port, () => {
+  console.log(`Trello Report Tool is listening on port ${port}`)
+})
 
 
 // helper functions
