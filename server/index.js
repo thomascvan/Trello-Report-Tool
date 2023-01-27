@@ -1,12 +1,15 @@
 const express = require('express');
 var cors = require('cors');
 const path = require('path');
+const http = require('http');
+
 
 const { getOutput } = require("./report.js");
 const { getCurrentBacklog } = require("./APIFunction.js");
 
 
 const app = express();
+
 const port = 3000;
 app.use(express.json());
 
@@ -63,10 +66,14 @@ app.post('/', (req, res) => {
     })
   })
 })
+const httpServer = http.createServer(app);
 
-app.listen(port, () => {
-  console.log(`Trello Report Tool is listening on port ${port}`)
-})
+httpServer.listen(80);
+
+
+// app.listen(port, () => {
+//   console.log(`Trello Report Tool is listening on port ${port}`)
+// })
 
 
 // helper functions
