@@ -60,7 +60,8 @@ app.post('/', (req, res) => {
       console.log('Lead Time:', leadTime);
       res.send({
         output: output,
-        leadTime: leadTime
+        leadTime: leadTime,
+        backlog: backlog
       });
     })
   })

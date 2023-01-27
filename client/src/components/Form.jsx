@@ -8,6 +8,7 @@ const Form = () => {
   const [count, setCount] = useState('');
   const [leadTime, setLeadTime] = useState('');
   const [status, setStatus] = useState(undefined);
+  const [backlog, setBacklog] = useState(undefined);
 
   function formSubmit() {
     setStatus('fetching...')
@@ -19,6 +20,7 @@ const Form = () => {
     ).then((response) => {
       setStatus(' ')
       console.log(response.data);
+      setBacklog(response.data.backlog);
       setCount(response.data.output);
       setLeadTime(Math.round(response.data.leadTime * 100) / 100);
     }).catch((err) => {
@@ -39,6 +41,7 @@ const Form = () => {
         { status ?
             <>
             {status}
+            <p>Backlog: {backlog}</p>
             <p>Jobs Engineered: {count}</p>
             <p>Lead Time: {leadTime}</p>
             </>

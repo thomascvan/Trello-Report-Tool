@@ -12,7 +12,7 @@ module.exports.getOutput = (startDate, endDate) => {
     var counter = 0;
     var obj = JSON.parse(fs.readFileSync(path.join(__dirname, './data/data.json'), 'utf8'));
     // console.log(`Searching from ${startDate} to ${endDate}`);
-    console.log(obj);
+    // console.log(obj);
 
     var currentDate = new Date(startDate);
     endDate = new Date(endDate);
