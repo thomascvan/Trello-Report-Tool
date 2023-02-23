@@ -54,7 +54,8 @@ app.post('/', (req, res) => {
   .then(() => {
     getOutput(startDate, endDate)
     .then(response => {
-      output = response;
+      output = response.counter;
+      engineerCount = response.engineerCount
       console.log('Output:', output);
       jobsPerDay = output/workingDays;
       leadTime = backlog/jobsPerDay;
@@ -62,7 +63,8 @@ app.post('/', (req, res) => {
       res.send({
         output: output,
         leadTime: leadTime,
-        backlog: backlog
+        backlog: backlog,
+        engineerCount: engineerCount
       });
     })
   })

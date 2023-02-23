@@ -35,6 +35,6 @@ module.exports.getOutput = (startDate, endDate) => {
       }
     }
     console.log(engineerCount)
-    return counter;
+    return {counter: counter, engineerCount: engineerCount};
   })
 }
