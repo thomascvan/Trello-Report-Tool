@@ -55,6 +55,7 @@ app.post('/', (req, res) => {
     getOutput(startDate, endDate)
     .then(response => {
       output = response;
+      console.log('Output:', output);
       jobsPerDay = output/workingDays;
       leadTime = backlog/jobsPerDay;
       console.log('Lead Time:', leadTime);

@@ -18,7 +18,7 @@ module.exports.updateDataset = () => {
       key: API_KEY,
       token: TOKEN,
       fields: 'all',
-      actions: 'all',
+      actions: 'updateCard:idList,emailCard',
       actions_limit: 1000
     }
   }).then(response => {
