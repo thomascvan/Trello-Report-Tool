@@ -1,12 +1,9 @@
 const express = require('express');
 var cors = require('cors');
 const path = require('path');
-// const http = require('http');
-
 
 const { getOutput } = require("./report.js");
 const { getCurrentBacklog } = require("./APIFunction.js");
-
 
 const app = express();
 
@@ -16,12 +13,6 @@ app.use(express.json());
 app.use(cors())
 const DIST_DIR = path.join(__dirname, '../client/dist');
 app.use(express.static(DIST_DIR));
-
-
-// compress all responses
-
-
-
 
 app.get('/', (req, res) => {
     res.send('ok');
@@ -83,12 +74,13 @@ app.listen(port, () => {
 function calcBusinessDays(startDate, endDate) { // input given as Date objects
   var startDate = new Date(startDate);
   var endDate = new Date(endDate);
-
+  
   let businessDays = 0;
   const curDate = new Date(startDate.getTime());
   while (curDate <= endDate) {
       const dayOfWeek = curDate.getDay();
-      if(dayOfWeek !== 0 && dayOfWeek !== 6) businessDays++;
+      console.log(dayOfWeek)
+      if(dayOfWeek !== 5 && dayOfWeek !== 6) businessDays++;
       curDate.setDate(curDate.getDate() + 1);
   }
   return businessDays;
