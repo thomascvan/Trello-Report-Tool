@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Form from "./Form.jsx";
+import BarChart from "./BarChart.jsx";
 import '../style.css';
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
             <div>
                 <h1>JE Engineering Output Report</h1>
                 <Form />
+                <BarChart />
             </div>
         )
     }
