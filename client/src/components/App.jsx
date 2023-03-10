@@ -17,8 +17,8 @@ const App = () => {
             <div>
                 <h1>JE Engineering Output Report</h1>
                 <Form updateData={updateData}/>
+                <div className="chart-container" style={{position: 'relative', height: '40vh', width:'70vw'}}> <BarChart data={chartData} /> </div>
             </div>
-            <div className="chart-container" style={{position: 'relative', height: '40vh', width:'70vw'}}> <BarChart data={chartData} /> </div>
             </>
         )
 }

@@ -3,3 +3,4 @@ node_modules
 server/data/data.json
 
 client/dist/bundle.js
+server/data/data.json

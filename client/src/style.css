@@ -6,6 +6,10 @@ body {
   color: #0A2463;
 }
 
+.center {
+  margin: auto;
+  width: 90%;
+}
 
 h1 {
   margin-left: 20px;

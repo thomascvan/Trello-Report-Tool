@@ -46,9 +46,9 @@ const Form = (props) => {
         { status ?
             <>
             {status}
-            <p>Backlog: {backlog}</p>
-            <p>Jobs Engineered: {count}</p>
-            <p>Lead Time: {leadTime}</p>
+            <h4>Backlog: {backlog}</h4>
+            <h4>Jobs Engineered: {count}</h4>
+            <h4>Lead Time: {leadTime}</h4>
             {engineerCount ? Object.keys(engineerCount).map((item, i) => <li key={i}>{item}: {engineerCount[item]}</li>) : null}
             </>
             : null
