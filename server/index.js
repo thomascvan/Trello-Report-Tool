@@ -51,6 +51,7 @@ app.post('/', (req, res) => {
       jobsPerDay = output/workingDays;
       leadTime = backlog/jobsPerDay;
       console.log('Lead Time:', leadTime);
+      console.log('Query Time:', (new Date()).toLocaleString());
       res.send({
         output: output,
         leadTime: leadTime,
