@@ -1,22 +1,26 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./Form.jsx";
 import BarChart from "./BarChart.jsx";
 import '../style.css';
 
-class App extends Component {
+const App = () => {
 
-    render() {
+    const [chartData, setChartData] = useState({});
+
+    function updateData(data) {
+        setChartData(data);
+    }
+
         return (
             <>
             <div>
                 <h1>JE Engineering Output Report</h1>
-                <Form />
+                <Form updateData={updateData}/>
             </div>
-            <div className="chart-container" style={{position: 'relative', height: '40vh', width:'70vw'}}> <h6>STILL TESTING, NOT ACCURATE:</h6> <BarChart /> </div>
-            {/* <BarChart style={{position: 'relative', height: '40vh', width:'80vw'}}/> */}
+            <div className="chart-container" style={{position: 'relative', height: '40vh', width:'70vw'}}> <BarChart data={chartData} /> </div>
             </>
         )
-    }
 }
 
 export default App;

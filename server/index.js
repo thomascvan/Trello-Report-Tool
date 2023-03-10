@@ -60,10 +60,6 @@ app.post('/', (req, res) => {
     })
   })
 })
-// const httpServer = http.createServer(app);
-
-// httpServer.listen(80);
-
 
 app.listen(port, () => {
   console.log(`Trello Report Tool is listening on port ${port}`)
@@ -74,7 +70,7 @@ app.listen(port, () => {
 function calcBusinessDays(startDate, endDate) { // input given as Date objects
   var startDate = new Date(startDate);
   var endDate = new Date(endDate);
-  
+
   let businessDays = 0;
   const curDate = new Date(startDate.getTime());
   while (curDate <= endDate) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Form = () => {
+const Form = (props) => {
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -26,6 +26,8 @@ const Form = () => {
       setLeadTime(Math.round(response.data.leadTime * 100) / 100);
       console.log(response.data.engineerCount)
       setEngineerCount(response.data.engineerCount);
+      props.updateData(response.data.engineerCount);
+
     }).catch((err) => {
       console.log(err);
     })
