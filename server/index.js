@@ -70,9 +70,45 @@ app.listen(port, () => {
   console.log(`Trello Report Tool is listening on port ${port}`)
 })
 
+// update trello card at start up
+updateLeadTimeCard();
 
 // cron
 cron.schedule(`0 4 * * *`, () => { // updates card every 4 AM
+  updateLeadTimeCard();
+})
+
+
+// helper functions
+function calcBusinessDays(startDate, endDate) { // input given as Date objects
+  var startDate = new Date(startDate);
+  var endDate = new Date(endDate);
+
+  let businessDays = 0;
+  const curDate = new Date(startDate.getTime());
+  while (curDate <= endDate) {
+      const dayOfWeek = curDate.getDay();
+      console.log(dayOfWeek)
+      if(dayOfWeek !== 5 && dayOfWeek !== 6) businessDays++;
+      curDate.setDate(curDate.getDate() + 1);
+  }
+  return businessDays;
+}
+
+function business_day_from_date(daysAgo, date) {
+  const result = [];
+  const d = new Date(date);
+  while (daysAgo > 0) {
+    d.setDate(d.getDate() - 1);
+    if (d.getDay() !== 0 && d.getDay() !== 6) {
+      daysAgo--;
+      result.push(new Date(d));
+    }
+  }
+  return result.reverse()[0];
+}
+
+function updateLeadTimeCard() {
   let endDate = business_day_from_date(1, Date()).toISOString().split('T')[0];
   let startDate = business_day_from_date(10, Date()).toISOString().split('T')[0];
   let workingDays = calcBusinessDays(startDate, endDate);
@@ -117,35 +153,4 @@ cron.schedule(`0 4 * * *`, () => { // updates card every 4 AM
       })
     })
   })
-
-})
-
-
-// helper functions
-function calcBusinessDays(startDate, endDate) { // input given as Date objects
-  var startDate = new Date(startDate);
-  var endDate = new Date(endDate);
-
-  let businessDays = 0;
-  const curDate = new Date(startDate.getTime());
-  while (curDate <= endDate) {
-      const dayOfWeek = curDate.getDay();
-      console.log(dayOfWeek)
-      if(dayOfWeek !== 5 && dayOfWeek !== 6) businessDays++;
-      curDate.setDate(curDate.getDate() + 1);
-  }
-  return businessDays;
-}
-
-function business_day_from_date(daysAgo, date) {
-  const result = [];
-  const d = new Date(date);
-  while (daysAgo > 0) {
-    d.setDate(d.getDate() - 1);
-    if (d.getDay() !== 0 && d.getDay() !== 6) {
-      daysAgo--;
-      result.push(new Date(d));
-    }
-  }
-  return result.reverse()[0];
 }
